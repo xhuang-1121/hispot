@@ -47,5 +47,4 @@ class LRP_cap(LRP_Model):
         # Set objective
         # prob += lpSum([[x[i][j] * self.distance[i, j] for i in set_F] for j in set_D])  # Minimum total distance
         prob += lpSum([[x[i][j] * self.distance[i, j] for i in range(num_fa)] for j in range(num_de)])  # Minimum total distance
-        solver = self.show_result(prob)
-        return solver
+        return self.show_result(prob)

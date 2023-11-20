@@ -7,7 +7,7 @@ n_points = 20
 p = 4
 radius = 0.2
 num_people = np.random.randint(1, 2, size=n_points)
-points = [(random.random(), random.random()) for i in range(n_points)]
+points = [(random.random(), random.random()) for _ in range(n_points)]
 points_np = np.array(points)
 
 centers, obj = MCLP(num_points=n_points,

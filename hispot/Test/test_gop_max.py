@@ -8,7 +8,7 @@ num_path = 5  # path num
 num_m = 2  # choice facility
 Vp = [[0, 1], [2, 3], [4, 5], [6, 7], [8, 9]]
 Vp_np = np.array(Vp)  # Vp:Path
-points = [(random.random(), random.random()) for i in range(num_point)]  # V
+points = [(random.random(), random.random()) for _ in range(num_point)]
 points_np = np.array(points)
 api = np.random.randint(10, size=(num_path, num_point))  # api
 selected_path, selected_vector = MaAG(num_path=num_path,

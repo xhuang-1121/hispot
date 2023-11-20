@@ -28,5 +28,4 @@ class LSCP(CModel):
         for j in range(self.num_points):
             prob += (lpSum([self.distance[i, j] * x[i] for i in range(self.num_points)]) >= 1)
 
-        solve = self.show_result(prob)
-        return solve
+        return self.show_result(prob)

@@ -39,6 +39,4 @@ class PCenter(PModel):
 
         for i in range(self.num_points):
             prob += lpSum([y[i][j] * self.distance[i, j] for j in range(self.num_points)]) <= Z
-        # prob += [lpSum(y[i][j] * self.distance[i, j] for i in range(self.num_points)) <= Z for j in range(self.num_points)]
-        solve = self.show_result(prob)
-        return solve
+        return self.show_result(prob)

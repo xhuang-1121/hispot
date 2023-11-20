@@ -17,16 +17,13 @@ class CModel:
                 if self.x[i].varValue == 1:
                     self.centers.append(i)
         obj = value(prob.objective)
-        if self.name == 'MCLP' or self.name == "LSCP":
+        if self.name in ['MCLP', "LSCP"]:
             print("Selected points =", self.centers)
             print("The coverage radius =", self.radius)
             print("Minimum cost =", obj)
             return self.centers, obj
         elif self.name == "BCLP":
-            cover_twice = []
-            for i in range(self.num_points):
-                if self.u[i].varValue == 1:
-                    cover_twice.append(i)
+            cover_twice = [i for i in range(self.num_points) if self.u[i].varValue == 1]
             print("Selected points =", self.centers)
             print("Covered twice points =", cover_twice)
             print("The objective is = ", obj)

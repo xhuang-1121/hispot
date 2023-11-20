@@ -16,22 +16,22 @@ class FIFLP_Model:
         selected_vector = []
         if LpStatus[prob.status] == "Optimal":
             if self.name == 'MaFM':
-                for i in range(self.num_path):
-                    if self.xp[i].varValue == 1:
-                        selected_path.append(i)
-                for i in range(self.num_vector):
-                    if self.yi[i].varValue == 1:
-                        selected_vector.append(i)
+                selected_path.extend(
+                    i for i in range(self.num_path) if self.xp[i].varValue == 1
+                )
+                selected_vector.extend(
+                    i for i in range(self.num_vector) if self.yi[i].varValue == 1
+                )
                 print("Selected paths =", selected_path)
                 print("Selected points =", selected_vector)
                 print("Maximum flow =", value(prob.objective))
             elif self.name == 'MiFM':
-                for i in range(self.num_path):
-                    if self.xp[i].varValue == 1:
-                        selected_path.append(i)
-                for i in range(self.num_vector):
-                    if self.yi[i].varValue == 1:
-                        selected_vector.append(i)
+                selected_path.extend(
+                    i for i in range(self.num_path) if self.xp[i].varValue == 1
+                )
+                selected_vector.extend(
+                    i for i in range(self.num_vector) if self.yi[i].varValue == 1
+                )
                 print("Selected paths =", selected_path)
                 print("Selected points =", selected_vector)
                 print("Minimum flow =", value(prob.objective))
@@ -41,9 +41,9 @@ class FIFLP_Model:
                         if self.xpi[i, j].varValue == 1:
                             selected_path.append(i)
                             break
-                for i in range(self.num_vector):
-                    if self.yi[i].varValue == 1:
-                        selected_vector.append(i)
+                selected_vector.extend(
+                    i for i in range(self.num_vector) if self.yi[i].varValue == 1
+                )
                 print("Selected paths =", selected_path)
                 print("Selected points =", selected_vector)
                 print("Maximum flow =", value(prob.objective))
@@ -53,9 +53,9 @@ class FIFLP_Model:
                         if self.xpi[i, j].varValue == 1:
                             selected_path.append(i)
                             break
-                for i in range(self.num_vector):
-                    if self.yi[i].varValue == 1:
-                        selected_vector.append(i)
+                selected_vector.extend(
+                    i for i in range(self.num_vector) if self.yi[i].varValue == 1
+                )
                 print("Selected paths =", selected_path)
                 print("Selected points =", selected_vector)
                 print("Minimization of the Number of Facilities for Gain Maximization =", value(prob.objective))

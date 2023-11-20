@@ -56,7 +56,7 @@ class PModel(Locate):
                 elif self.name == 'p-center':
                     print("Assigned relationships = ", self.assigns)
                     print("Minimum Maximum distance = ", value(prob.objective))
-                elif self.name == 'UFLP' or self.name == 'CFLP':
+                elif self.name in ['UFLP', 'CFLP']:
                     print("Assigned relationships = ", self.assigns)
                     print("Minimum total cost = ", value(prob.objective))
                 # print(self.connections)

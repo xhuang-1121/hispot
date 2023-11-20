@@ -8,7 +8,7 @@ p = 4
 radius = 0.2
 
 setup_cost = np.random.randint(1, 2, size=n_points)
-points = [(random.random(), random.random()) for i in range(n_points)]
+points = [(random.random(), random.random()) for _ in range(n_points)]
 points_np = np.array(points)
 
 centers, cover_twice, obj = BCLP(num_located=p,

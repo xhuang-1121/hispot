@@ -32,5 +32,4 @@ class PDispersion(PModel):
                 if i != j:
                     prob += (2 - x[i] - x[j]) * M + self.distance[i, j] >= D_min
 
-        solve = self.show_result(prob)
-        return solve
+        return self.show_result(prob)

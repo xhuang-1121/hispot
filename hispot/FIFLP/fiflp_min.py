@@ -32,5 +32,4 @@ class MiFM(FIFLP_Model):
 
         prob += pulp.lpSum(self.path_flow[p] * xp[p] for p in range(self.num_path)) >= self.intercept_e
 
-        solve = self.show_result(prob)
-        return solve
+        return self.show_result(prob)
