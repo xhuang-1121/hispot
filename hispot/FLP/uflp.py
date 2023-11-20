@@ -27,7 +27,7 @@ class UFLP(PModel):
         # Set objective
         prob += lpSum([[(y[i][j] * self.distance[i, j]) for i in range(self.num_points)]
                        for j in range(self.num_points)]) + \
-                lpSum([(x[i] * self.cost[i] for i in range(self.num_points))])    # Minimum cost including shippingcost and establishment cost
+                    lpSum([(x[i] * self.cost[i] for i in range(self.num_points))])    # Minimum cost including shippingcost and establishment cost
 
         # Add constraints
         prob += (lpSum([x[i] for i in range(self.num_points)])) <= self.num_located     # Under than total number of facilities
@@ -38,5 +38,4 @@ class UFLP(PModel):
             for i in range(self.num_points):
                 prob += y[i][j] <= x[j]  # Assign before locate; Points can only be assigned to facilities
 
-        solve = self.show_result(prob)
-        return solve
+        return self.show_result(prob)

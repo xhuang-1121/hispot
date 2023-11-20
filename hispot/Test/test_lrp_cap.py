@@ -6,10 +6,12 @@ from pulp import *
 random.seed(1)
 num_fa = 5
 num_de = 20
-facility_nodes = [(random.random(), random.random()) for i in range(num_fa)]
-fa_cap = [(random.randint(30, 35), random.randint(35, 40)) for i in range(num_fa)]
-demand_nodes = [(random.random(), random.random()) for i in range(num_de)]
-de_demand = [random.randint(1, 10) for i in range(num_de)]
+facility_nodes = [(random.random(), random.random()) for _ in range(num_fa)]
+fa_cap = [
+    (random.randint(30, 35), random.randint(35, 40)) for _ in range(num_fa)
+]
+demand_nodes = [(random.random(), random.random()) for _ in range(num_de)]
+de_demand = [random.randint(1, 10) for _ in range(num_de)]
 
 facility_nodes_np = np.array(facility_nodes)
 demand_nodes_np = np.array(demand_nodes)

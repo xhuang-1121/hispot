@@ -44,5 +44,4 @@ class PHub(PModel):
 
         prob += lpSum(x[k][k] for k in N) == self.num_hubs
 
-        solver = self.show_result(prob)
-        return solver
+        return self.show_result(prob)

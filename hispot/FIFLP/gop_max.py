@@ -19,7 +19,7 @@ class MaAG(FIFLP_Model):
         xpi = {}
         for i in range(self.num_path):
             for j in self.path_vector[i]:
-                name = 'Select_Path' + str(i) + '_' + str(j)
+                name = f'Select_Path{str(i)}_{str(j)}'
                 xpi[i, j] = pulp.LpVariable(name, 0, 1, LpBinary)
         zones_v = list(range(self.num_vector))
         yi = LpVariable.dicts("Select_Vector", zones_v, cat="Binary")  # yi
@@ -40,6 +40,4 @@ class MaAG(FIFLP_Model):
         for p in range(self.num_path):
             prob += pulp.lpSum(xpi[p, i] for i in self.path_vector[p]) <= 1
 
-        # solve
-        solve = self.show_result(prob)
-        return solve
+        return self.show_result(prob)

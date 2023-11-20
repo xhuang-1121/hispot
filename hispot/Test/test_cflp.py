@@ -9,7 +9,7 @@ num_located = 4  # P: number of located facility in the end
 cost = np.random.randint(10, size=num_points)  # c
 demand = np.random.randint(1, 2, size=num_points)  # d
 capacity = np.random.randint(80, size=num_points)  # C
-points = [(random.random(), random.random()) for i in range(num_points)]
+points = [(random.random(), random.random()) for _ in range(num_points)]
 points_np = np.array(points)
 
 centers, assigns, obj = CFLP(cost=cost,

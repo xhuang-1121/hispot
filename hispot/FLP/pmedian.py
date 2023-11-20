@@ -39,8 +39,7 @@ class PMedian(PModel):
             for i in range(self.num_points):
                 prob += y[i][j] <= x[j]  # Assign before locate; Points can only be assigned to facilities
 
-        solve = self.show_result(prob)
-        return solve
+        return self.show_result(prob)
 
     def teitz_bart(self):
         self.distance = np.sum((self.points[:, np.newaxis, :] - self.points[np.newaxis, :, :]) ** 2,
@@ -48,8 +47,8 @@ class PMedian(PModel):
         N = self.num_points
         p = self.num_located
         median = random.sample(range(N), p)
-        d1 = [-1 for i in range(N)]
-        d2 = [-1 for i in range(N)]
+        d1 = [-1 for _ in range(N)]
+        d2 = [-1 for _ in range(N)]
 
         # update_assignment
         node1, node2 = -1, -1
@@ -66,9 +65,7 @@ class PMedian(PModel):
                     node2 = median[j]
             d1[i] = node1
             d2[i] = node2
-        dist1 = 0
-        for i in range(N):
-            dist1 += self.distance[i][d1[i]]
+        dist1 = sum(self.distance[i][d1[i]] for i in range(N))
         r = dist1
 
         verbose = True
@@ -76,12 +73,11 @@ class PMedian(PModel):
             print(r)
         while True:
             result = next(self.distance, median, d1, d2, p, N)
-            if result[0]:
-                r = result[1]
-                if verbose:
-                    print(r)
-            else:
+            if not result[0]:
                 break
+            r = result[1]
+            if verbose:
+                print(r)
         return median, r
 
     # def heuristic_solver(self):

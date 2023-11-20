@@ -32,6 +32,4 @@ class MaFM(FIFLP_Model):
         for k in range(self.num_path):
             prob += pulp.lpSum(yi[i] for i in self.path_vector[k]) >= self.xp[k]
 
-        # solve
-        solve = self.show_result(prob)
-        return solve
+        return self.show_result(prob)

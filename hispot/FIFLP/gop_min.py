@@ -19,7 +19,7 @@ class MiFMG(FIFLP_Model):
         xpi = {}
         for i in range(self.num_path):
             for j in self.path_vector[i]:
-                name = 'Select_Path' + str(i) + '_' + str(j)
+                name = f'Select_Path{str(i)}_{str(j)}'
                 xpi[i, j] = pulp.LpVariable(name, 0, 1, LpBinary)
         zones_v = list(range(self.num_vector))
         yi = LpVariable.dicts("Select_Vector", zones_v, cat="Binary")  # yi
@@ -40,6 +40,4 @@ class MiFMG(FIFLP_Model):
         prob += pulp.lpSum(self.vector_gain[p, i % 2] * xpi[p, i]
                            for p in range(self.num_path) for i in self.path_vector[p]) >= self.flow_gain
 
-        # solve
-        solve = self.show_result(prob)
-        return solve
+        return self.show_result(prob)

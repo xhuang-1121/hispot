@@ -48,5 +48,4 @@ class LRP_cost(LRP_Model):
         # Set objective
         prob += lpSum([[x[i][j] * self.distance[i, j] for i in set_F] for j in set_D]) + lpSum(y[i] * self.fa_cost[i] for i in set_F) # Minimum total distance
 
-        solver = self.show_result(prob)
-        return solver
+        return self.show_result(prob)

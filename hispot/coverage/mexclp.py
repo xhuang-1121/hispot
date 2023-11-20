@@ -39,5 +39,4 @@ class MEXCLP(CModel):
 
         prob += (lpSum([x[j] for j in range(self.num_points)]) <= self.num_located)
 
-        solve = self.show_result(prob)
-        return solve
+        return self.show_result(prob)

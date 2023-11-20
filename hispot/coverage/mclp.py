@@ -35,5 +35,4 @@ class MCLP(CModel):
         for i in range(self.num_points):
             prob += (lpSum([x[j] * self.distance[i, j] for j in range(self.num_points)]) >= z[i])
 
-        solve = self.show_result(prob)
-        return solve
+        return self.show_result(prob)

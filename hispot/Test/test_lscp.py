@@ -5,7 +5,7 @@ from pulp import *
 
 n_points = 20
 radius = 0.2
-points = [(random.random(), random.random()) for i in range(n_points)]
+points = [(random.random(), random.random()) for _ in range(n_points)]
 points_np = np.array(points)
 
 centers, obj = LSCP(num_points=n_points,
